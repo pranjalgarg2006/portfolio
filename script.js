@@ -1,37 +1,100 @@
-// IMAGE DATA FOR LIGHTBOX
-const uiuxImages = [
-  // Add your UI/UX project images here
-  // Example: 'path/to/image.jpg'
+// WORK PROJECTS (edit this list instead of copy-pasting HTML cards)
+const workProjects = [
+  { type: 'uiux', tag: 'UI/UX', name: 'UI/UX Project 01', desc: 'High-fidelity UI screens & prototype.', image: 'assets/card1.jpg' },
+  { type: 'uiux', tag: 'UI/UX', name: 'UI/UX Project 02', desc: 'Problem-solving UX flow with clean UI.', image: 'assets/WhatsApp Image 2026-03-26 at 1.29.54 AM.jpeg' },
+  { type: 'uiux', tag: 'GOOGLE DEVELOPER GROUP', name: 'Team 24-25 Reveal', desc: 'Illustrated events list for Google developer group with quirky characters and a yellow-card Ul style layout.', image: 'assets/WhatsApp Image 2026-03-26 at 1.29.55 AM.jpeg' },
+  { type: 'uiux', tag: 'INSTAGRAM POST NOSTALGIC BITES', name: 'Pool Party Campaign', desc: 'Summer-themed promotional flyer for Nostalgic Bites featuring tropical elements and product imagery.', image: 'assets/WhatsApp Image 2026-03-26 at 1.29.55 AM (1).jpeg' },
+  { type: 'uiux', tag: 'UI/UX', name: 'UI/UX Project 05', desc: 'Mobile-first design with micro-interactions.', image: 'assets/WhatsApp Image 2026-03-26 at 1.29.55 AM (2).jpeg' },
+  { type: 'uiux', tag: 'NGO WORK SAANJH', name: 'Meet The Team - Saanjh', desc: 'Team intro card for NGO Saanjh with colourful scrapbook aesthetic, doodles, and profile reveal layout.', image: 'assets/WhatsApp Image 2026-03-26 at 1.29.55 AM (3).jpeg' },
+  { type: 'uiux', tag: 'UI/UX', name: 'UI/UX Project 07', desc: 'Accessible UI with consistent spacing.', image: 'assets/WhatsApp Image 2026-03-26 at 1.29.55 AM (4).jpeg' },
+  { type: 'uiux', tag: 'UI/UX', name: 'UI/UX Project 08', desc: 'E-commerce flow concept & UI kit.', image: 'assets/WhatsApp Image 2026-03-26 at 1.29.55 AM (5).jpeg' },
+  { type: 'uiux', tag: 'REEL THUMBNAIL NOSTALGIC BITES', name: 'People & Product Reel', desc: 'Vibrant collage-style reel thumbnail with customer testimonials around the Nostalgic Bites jar.Landing page UI with strong visual rhythm.', image: 'assets/WhatsApp Image 2026-03-26 at 1.29.55 AM (6).jpeg' },
+  { type: 'uiux', tag: 'UI/UX', name: 'UI/UX Project 10', desc: 'App redesign concept with polished UI.', image: 'assets/WhatsApp Image 2026-03-26 at 1.29.55 AM (7).jpeg' },
+  { type: 'uiux', tag: 'UI DESIGN CREATIVE', name: 'Donut Flavors Scroll UI', desc: 'Scroll-animated product Ul with flavour-matched color blocks - Blueberry, Green Apple, Caramel.', image: 'assets/WhatsApp Image 2026-03-26 at 1.30.41 AM.jpeg' },
+  { type: 'uiux', tag: 'UI/UX', name: 'UI/UX Project 12', desc: 'Component-driven design with variants.', image: 'assets/WhatsApp Image 2026-03-26 at 1.30.41 AM (5).jpeg' },
+  { type: 'uiux', tag: 'UI/UX', name: 'UI/UX Project 12', desc: 'Component-driven design with variants.', image: 'assets/WhatsApp Image 2026-03-26 at 1.30.41 AM (1).jpeg' },
+  { type: 'uiux', tag: 'UI/UX', name: 'UI/UX Project 12', desc: 'Component-driven design with variants.', image: 'assets/WhatsApp Image 2026-03-26 at 1.30.42 AM (1).jpeg' },
+  { type: 'uiux', tag: 'UI/UX', name: 'UI/UX Project 12', desc: 'Component-driven design with variants.', image: 'assets/WhatsApp Image 2026-03-26 at 1.30.42 AM.jpeg' },
+
+  { type: 'graphic', tag: 'Graphic', name: 'Graphic Project 01', desc: 'Social post / banner exploration.', image: 'assets/WhatsApp Image 2026-03-26 at 1.30.41 AM (2).jpeg' },
+  { type: 'graphic', tag: 'Graphic', name: 'Graphic Project 02', desc: 'Poster concept with bold composition.', image: 'assets/WhatsApp Image 2026-03-26 at 1.30.41 AM (3).jpeg' },
+  { type: 'graphic', tag: 'DESIGN ORIGINAL', name: 'Dual Sense Product Card', desc: 'Gaming product card Ul with color selection, bold typography, and dark futuristic aesthetic.', image: 'assets/WhatsApp Image 2026-03-26 at 1.30.41 AM (4).jpeg' },
+  { type: 'graphic', tag: 'Graphic', name: 'Graphic Project 04', desc: 'Minimal layout with strong hierarchy.', image: 'assets/WhatsApp Image 2026-03-26 at 1.29.55 AM (4).jpeg' },
+  { type: 'graphic', tag: 'Graphic', name: 'Graphic Project 05', desc: 'Creative concept with clean typography.', image: 'assets/WhatsApp Image 2026-03-26 at 1.29.55 AM (6).jpeg' },
+  { type: 'graphic', tag: 'SPILL', name: 'Spill Campus App Promo', desc: 'High-energy campus app promo with bold green gradient, Hinglish copy, and 3D UI mockups.', image: 'assets/WhatsApp Image 2026-03-26 at 1.29.55 AM (7).jpeg' },
 ];
 
-const graphicImages = [
-  // Add your graphic design project images here
-  // Example: 'path/to/image.jpg'
-];
+// IMAGE DATA FOR LIGHTBOX (auto-filled from workProjects)
+const uiuxImages = workProjects
+  .filter(p => p.type === 'uiux')
+  .map(p => ({ src: p.image, caption: p.name }));
+
+const graphicImages = workProjects
+  .filter(p => p.type === 'graphic')
+  .map(p => ({ src: p.image, caption: p.name }));
+
+function renderWorkCards() {
+  const grid = document.getElementById('workGrid');
+  const template = document.getElementById('projectCardTemplate');
+  if (!grid || !template) return;
+
+  grid.innerHTML = '';
+
+  const lightboxIndexByType = { uiux: 0, graphic: 0 };
+  workProjects.forEach((project) => {
+    const card = template.content.firstElementChild.cloneNode(true);
+    card.classList.add(project.type);
+
+    const img = card.querySelector('.project-img');
+    img.src = project.image;
+    img.alt = project.name;
+
+    card.querySelector('.project-tag').textContent = project.tag;
+    card.querySelector('.project-name').textContent = project.name;
+    card.querySelector('.project-desc').textContent = project.desc;
+
+    const lbIdx = lightboxIndexByType[project.type]++;
+    card.addEventListener('click', () => openLightbox(lbIdx, project.type));
+
+    grid.appendChild(card);
+  });
+}
 
 let lbCurrentIdx = 0;
 let lbCurrentSet = [];
 
 function openLightbox(idx, type) {
   lbCurrentSet = type === 'uiux' ? uiuxImages : graphicImages;
+  if (!lbCurrentSet.length) return;
   lbCurrentIdx = idx;
   showLbImage();
   document.getElementById('lightbox').classList.add('active');
 }
 
 function showLbImage() {
-  document.getElementById('lbImg').src = lbCurrentSet[lbCurrentIdx];
-  document.getElementById('lbCaption').textContent = `${lbCurrentIdx + 1} / ${lbCurrentSet.length}`;
+  const current = lbCurrentSet[lbCurrentIdx];
+  if (!current) return;
+
+  const img = document.getElementById('lbImg');
+  img.src = current.src;
+  img.alt = current.caption || 'Project image';
+
+  const captionParts = [];
+  if (current.caption) captionParts.push(current.caption);
+  captionParts.push(`${lbCurrentIdx + 1} / ${lbCurrentSet.length}`);
+  document.getElementById('lbCaption').textContent = captionParts.join(' · ');
 }
 
 document.getElementById('lbClose').onclick = () => {
   document.getElementById('lightbox').classList.remove('active');
 };
 document.getElementById('lbPrev').onclick = () => {
+  if (!lbCurrentSet.length) return;
   lbCurrentIdx = (lbCurrentIdx - 1 + lbCurrentSet.length) % lbCurrentSet.length;
   showLbImage();
 };
 document.getElementById('lbNext').onclick = () => {
+  if (!lbCurrentSet.length) return;
   lbCurrentIdx = (lbCurrentIdx + 1) % lbCurrentSet.length;
   showLbImage();
 };
@@ -59,6 +122,9 @@ function filterWork(type, btn) {
     }
   });
 }
+
+// Build the grid before attaching hover/reveal listeners
+renderWorkCards();
 
 // CURSOR
 const cursor = document.getElementById('cursor');

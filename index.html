@@ -153,32 +153,21 @@
     <button class="tab-btn" onclick="filterWork('graphic', this)">Graphic</button>
   </div>
 
-  <div class="work-grid" id="workGrid">
-    <!-- Sample project cards - customize with your actual projects -->
-    <div class="project-card work-item uiux reveal" onclick="openLightbox(0, 'uiux')">
-      <img class="project-img" src="project1.jpg" alt="Project">
+  <div class="work-grid" id="workGrid"></div>
+
+  <template id="projectCardTemplate">
+    <div class="project-card work-item reveal">
+      <img class="project-img" src="" alt="">
       <div class="project-info">
-        <div class="project-tag">UI/UX</div>
-        <h3 class="project-name">Project One</h3>
-        <p class="project-desc">Description of your first project</p>
+        <div class="project-tag"></div>
+        <h3 class="project-name"></h3>
+        <p class="project-desc"></p>
       </div>
       <div class="card-overlay">
-        <button class="overlay-btn">View More</button>
+        <button class="overlay-btn" type="button">View More</button>
       </div>
     </div>
-    
-    <div class="project-card work-item graphic reveal" onclick="openLightbox(0, 'graphic')">
-      <img class="project-img" src="graphic1.jpg" alt="Graphic">
-      <div class="project-info">
-        <div class="project-tag">GRAPHIC</div>
-        <h3 class="project-name">Graphic One</h3>
-        <p class="project-desc">Description of your first graphic project</p>
-      </div>
-      <div class="card-overlay">
-        <button class="overlay-btn">View More</button>
-      </div>
-    </div>
-  </div>
+  </template>
 </section>
 
 <!-- SKILLS -->
