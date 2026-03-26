@@ -248,12 +248,24 @@
           <div class="tool-name">Photo Edit</div>
         </div>
       </div>
-      <div style="margin-top:32px; padding:20px; background:var(--glass); border:1px solid var(--glass-border); border-radius:16px;">
-        <div style="font-size:0.75rem;color:var(--neon);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">Currently Learning</div>
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem">UX Design · Coursera</div>
-        <div style="font-size:0.85rem;color:var(--muted);margin-top:4px">Google UX Design Professional Certificate</div>
-        <div style="margin-top:12px;height:4px;background:var(--glass-border);border-radius:4px;overflow:hidden">
-          <div style="height:100%;width:45%;background:linear-gradient(90deg,var(--purple),var(--neon));border-radius:4px;box-shadow:0 0 8px var(--glow-neon)"></div>
+      <div
+        class="project-card certificate-card reveal"
+        id="certificateCard"
+        role="button"
+        tabindex="0"
+        data-cert-src="assets/cetificate.jpeg"
+        data-cert-caption="Google UX Design Professional Certificate"
+      >
+        <div class="project-info">
+          <div class="project-tag">Currently Learning</div>
+          <h3 class="project-name">UX Design · Coursera</h3>
+          <p class="project-desc">Google UX Design Professional Certificate</p>
+          <div style="margin-top:12px;height:4px;background:var(--glass-border);border-radius:4px;overflow:hidden">
+            <div style="height:100%;width:100%;background:linear-gradient(90deg,var(--purple),var(--neon));border-radius:4px;box-shadow:0 0 8px var(--glow-neon)"></div>
+          </div>
+        </div>
+        <div class="card-overlay">
+          <button class="overlay-btn" type="button">View Certificate</button>
         </div>
       </div>
     </div>

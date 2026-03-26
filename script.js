@@ -71,6 +71,14 @@ function openLightbox(idx, type) {
   document.getElementById('lightbox').classList.add('active');
 }
 
+function openSingleImage(src, caption = '') {
+  if (!src) return;
+  lbCurrentSet = [{ src, caption }];
+  lbCurrentIdx = 0;
+  showLbImage();
+  document.getElementById('lightbox').classList.add('active');
+}
+
 function showLbImage() {
   const current = lbCurrentSet[lbCurrentIdx];
   if (!current) return;
@@ -83,6 +91,10 @@ function showLbImage() {
   if (current.caption) captionParts.push(current.caption);
   captionParts.push(`${lbCurrentIdx + 1} / ${lbCurrentSet.length}`);
   document.getElementById('lbCaption').textContent = captionParts.join(' · ');
+
+  const showNav = lbCurrentSet.length > 1;
+  document.getElementById('lbPrev').style.display = showNav ? 'flex' : 'none';
+  document.getElementById('lbNext').style.display = showNav ? 'flex' : 'none';
 }
 
 document.getElementById('lbClose').onclick = () => {
@@ -123,8 +135,28 @@ function filterWork(type, btn) {
   });
 }
 
+function bindCertificateCard() {
+  const card = document.getElementById('certificateCard');
+  if (!card) return;
+
+  const open = () => {
+    const src = card.dataset.certSrc;
+    const caption = card.dataset.certCaption || '';
+    openSingleImage(src, caption);
+  };
+
+  card.addEventListener('click', open);
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      open();
+    }
+  });
+}
+
 // Build the grid before attaching hover/reveal listeners
 renderWorkCards();
+bindCertificateCard();
 
 // CURSOR
 const cursor = document.getElementById('cursor');

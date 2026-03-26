@@ -548,6 +548,9 @@ section {
   background: rgba(255,255,255,0.25);
 }
 
+/* CERTIFICATE CARD */
+.certificate-card { margin-top: 32px; border-radius: 16px; }
+
 /* SKILLS */
 #skills {
   position: relative;
